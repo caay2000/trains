@@ -13,24 +13,14 @@ public abstract class WorldObject {
         this.position = position;
     }
 
-    public Position getPosition() {
+    protected Position getPosition() {
         return position;
     }
 
     public abstract void update();
 
-//    @Override
-//    public boolean equals(Object o) {
-//        return EqualsBuilder.reflectionEquals(this, o);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return HashCodeBuilder.reflectionHashCode(this);
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-//    }
+    public double distanceTo(WorldObject to) {
+        return this.position.distanceTo(to.getPosition());
+    }
+
 }

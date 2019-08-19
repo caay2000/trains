@@ -5,14 +5,19 @@ import lombok.ToString;
 
 @EqualsAndHashCode
 @ToString
-public class Position {
+final public class Position {
 
     public static final double POSITION_DELTA = 0.01d;
 
-    private float x;
-    private float y;
+    private final double x;
+    private final double y;
 
     public Position(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Position(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -21,9 +26,8 @@ public class Position {
         return Math.hypot(x - to.x, y - to.y);
     }
 
-    public void move(double x, double y) {
-        this.x += x;
-        this.y += y;
+    public Position move(double x, double y) {
+        return new Position(this.x + x, this.y + y);
     }
 
 
