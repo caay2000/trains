@@ -1,5 +1,6 @@
 package com.github.caay2000.model;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class Grid {
@@ -12,7 +13,7 @@ public class Grid {
     private final Random random;
 
     private Grid() {
-        this.random = new Random();
+        this.random = new SecureRandom();
     }
 
     public static Grid getInstance() {
