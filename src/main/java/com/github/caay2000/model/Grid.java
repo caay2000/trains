@@ -3,11 +3,10 @@ package com.github.caay2000.model;
 import java.security.SecureRandom;
 import java.util.Random;
 
+import static com.github.caay2000.model.Constants.GRID_SIZE;
+
 public class Grid {
 
-    public static final Integer GRID_SIZE = 25;
-    public static final Integer MINIMUM_DISTANCE_BETWEEN_CITIES = 3;
-    public static final Integer MAXIMUM_CONNECTION_DISTANCE_BETWEEN_CITIES = GRID_SIZE / 3;
 
     private static Grid instance;
     private final Random random;
@@ -28,12 +27,18 @@ public class Grid {
     }
 
     private int getRandomIntX() {
-        return random.ints(0, GRID_SIZE + 1).limit(1).findFirst().getAsInt();
+        return random.ints(0, Constants.getInteger(GRID_SIZE) + 1)
+                .limit(1)
+                .findFirst()
+                .getAsInt();
 
     }
 
     private int getRandomIntY() {
-        return random.ints(0, GRID_SIZE + 1).limit(1).findFirst().getAsInt();
+        return random.ints(0, Constants.getInteger(GRID_SIZE) + 1)
+                .limit(1)
+                .findFirst()
+                .getAsInt();
 
     }
 

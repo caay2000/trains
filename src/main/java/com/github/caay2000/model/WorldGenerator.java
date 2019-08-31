@@ -1,5 +1,8 @@
 package com.github.caay2000.model;
 
+import static com.github.caay2000.model.Constants.CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES;
+import static com.github.caay2000.model.Constants.CITY_MIN_DISTANCE_BETWEEN_CITIES;
+
 public class WorldGenerator {
 
     private final Grid grid;
@@ -23,7 +26,7 @@ public class WorldGenerator {
 
     private boolean isSuitable(World world, City newCity) {
         for (City city : world.getCities()) {
-            if (city.distanceTo(newCity) < Grid.MINIMUM_DISTANCE_BETWEEN_CITIES) {
+            if (city.distanceTo(newCity) < Constants.getInteger(CITY_MIN_DISTANCE_BETWEEN_CITIES)) {
                 return false;
             }
         }
@@ -32,7 +35,7 @@ public class WorldGenerator {
 
     private void createConnections(World world, City newCity) {
         for (City city : world.getCities()) {
-            if (city.distanceTo(newCity) < Grid.MAXIMUM_CONNECTION_DISTANCE_BETWEEN_CITIES) {
+            if (city.distanceTo(newCity) < Constants.getInteger(CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES)) {
                 world.getRoutes().putEdgeValue(city, newCity, new Route(city, newCity));
                 world.getRoutes().putEdgeValue(newCity, city, new Route(newCity, city));
             }
@@ -40,7 +43,7 @@ public class WorldGenerator {
     }
 
     private City createRandomCity() {
-        return new City.Builder(grid).randomCity();
+        return new City.Builder().randomCity(grid);
     }
 
 }

@@ -12,9 +12,9 @@ import static org.mockito.Mockito.when;
 public class WorldGeneratorTest {
 
     private static final Position POSITION_START = new Position(0, 0);
-    private static final Position POSITION_SHORT = new Position(Grid.MINIMUM_DISTANCE_BETWEEN_CITIES - 1, 0);
-    private static final Position POSITION_OK = new Position(Grid.MINIMUM_DISTANCE_BETWEEN_CITIES + 1, 0);
-    private static final Position POSITION_LONG = new Position(Grid.MAXIMUM_CONNECTION_DISTANCE_BETWEEN_CITIES + 1, 0);
+    private static final Position POSITION_SHORT = new Position(Constants.getInteger(Constants.CITY_MIN_DISTANCE_BETWEEN_CITIES) - 1, 0);
+    private static final Position POSITION_OK = new Position(Constants.getInteger(Constants.CITY_MIN_DISTANCE_BETWEEN_CITIES) + 1, 0);
+    private static final Position POSITION_LONG = new Position(Constants.getInteger(Constants.CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES) + 1, 0);
 
     @Mock
     private Grid grid;

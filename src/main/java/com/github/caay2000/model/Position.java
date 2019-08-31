@@ -7,8 +7,6 @@ import lombok.ToString;
 @ToString
 final public class Position {
 
-    public static final double POSITION_DELTA = 0.01d;
-
     private final double x;
     private final double y;
 

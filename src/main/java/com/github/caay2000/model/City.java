@@ -23,13 +23,10 @@ final public class City extends WorldObject {
 
     public static class Builder {
 
-        private final Grid grid;
-
-        public Builder(Grid grid) {
-            this.grid = grid;
+        public Builder() {
         }
 
-        public City randomCity() {
+        public City randomCity(Grid grid) {
 
             String name = "name";
             int population = 1;
