@@ -25,7 +25,8 @@ public class Simulation {
             long sleepMillis = (int) Math.floor(secondsElapsed * this.simulationFactor);
             Thread.sleep(Math.max(ZERO_MILLI_SECONDS, sleepMillis - realTimeElapsed));
         } catch (InterruptedException e) {
-            throw new TrainsException("error simulating time");
+            Thread.currentThread().interrupt();
+            throw new TrainsException("error simulating time", e);
         }
         this.realEpoch = new Date().getTime();
     }
