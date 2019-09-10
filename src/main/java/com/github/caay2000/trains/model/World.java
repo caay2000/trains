@@ -1,4 +1,4 @@
-package com.github.caay2000.model;
+package com.github.caay2000.trains.model;
 
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
@@ -12,7 +12,6 @@ import java.util.Set;
 @ToString
 public class World {
 
-    private final Grid grid = Grid.getInstance();
     private final Set<City> cities = new HashSet<>();
     private final MutableValueGraph<City, Route> routes = ValueGraphBuilder.directed().build();
 

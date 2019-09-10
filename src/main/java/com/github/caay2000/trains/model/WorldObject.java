@@ -1,13 +1,15 @@
-package com.github.caay2000.model;
+package com.github.caay2000.trains.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
-@EqualsAndHashCode
 @ToString
+@SuperBuilder
+@EqualsAndHashCode
 public abstract class WorldObject {
 
-    private final Position position;
+    protected final Position position;
 
     protected WorldObject(Position position) {
         this.position = position;
@@ -22,5 +24,4 @@ public abstract class WorldObject {
     public double distanceTo(WorldObject to) {
         return this.position.distanceTo(to.getPosition());
     }
-
 }

@@ -1,4 +1,4 @@
-package com.github.caay2000.model;
+package com.github.caay2000.trains.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -27,6 +27,4 @@ final public class Position {
     public Position move(double x, double y) {
         return new Position(this.x + x, this.y + y);
     }
-
-
 }

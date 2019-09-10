@@ -1,10 +1,8 @@
-package com.github.caay2000.model;
+package com.github.caay2000.trains.model;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static com.github.caay2000.model.Constants.POSITION_DELTA;
+import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class PositionTest {
 
@@ -91,6 +89,6 @@ public class PositionTest {
     }
 
     private static void assertDistance(double expected, double actual) {
-        Assert.assertEquals(expected, actual, Constants.getDouble(POSITION_DELTA));
+        Assert.assertEquals(expected, actual, Constants.POSITION_DELTA);
     }
 }

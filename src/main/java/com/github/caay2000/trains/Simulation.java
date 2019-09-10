@@ -1,4 +1,4 @@
-package com.github.caay2000;
+package com.github.caay2000.trains;
 
 public class Simulation implements Runnable {
 

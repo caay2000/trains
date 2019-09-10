@@ -1,14 +1,13 @@
-package com.github.caay2000.model;
+package com.github.caay2000.trains.model;
 
-import static com.github.caay2000.model.Constants.CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES;
-import static com.github.caay2000.model.Constants.CITY_MIN_DISTANCE_BETWEEN_CITIES;
+import java.util.Random;
 
 public class WorldGenerator {
 
-    private final Grid grid;
+    private final Random random;
 
-    public WorldGenerator(Grid grid) {
-        this.grid = grid;
+    public WorldGenerator(Random random) {
+        this.random = random;
     }
 
     public World generate(int numberOfCities) {
@@ -26,7 +25,7 @@ public class WorldGenerator {
 
     private boolean isSuitable(World world, City newCity) {
         for (City city : world.getCities()) {
-            if (city.distanceTo(newCity) < Constants.getInteger(CITY_MIN_DISTANCE_BETWEEN_CITIES)) {
+            if (city.distanceTo(newCity) < Constants.CITY_MIN_DISTANCE_BETWEEN_CITIES) {
                 return false;
             }
         }
@@ -35,7 +34,7 @@ public class WorldGenerator {
 
     private void createConnections(World world, City newCity) {
         for (City city : world.getCities()) {
-            if (city.distanceTo(newCity) < Constants.getInteger(CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES)) {
+            if (city.distanceTo(newCity) < Constants.CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES) {
                 world.getRoutes().putEdgeValue(city, newCity, new Route(city, newCity));
                 world.getRoutes().putEdgeValue(newCity, city, new Route(newCity, city));
             }
@@ -43,7 +42,14 @@ public class WorldGenerator {
     }
 
     private City createRandomCity() {
-        return new City.Builder().randomCity(grid);
+        return City.builder().name("name")
+                .population(1)
+                .position(randomPosition())
+                .build();
     }
 
+    private Position randomPosition() {
+        return new Position(random.nextInt(Constants.GRID_SIZE + 1),
+                random.nextInt(Constants.GRID_SIZE + 1));
+    }
 }

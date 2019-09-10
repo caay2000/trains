@@ -1,4 +1,4 @@
-package com.github.caay2000.model;
+package com.github.caay2000.trains.model;
 
 import lombok.EqualsAndHashCode;
 import nl.jqno.equalsverifier.EqualsVerifier;
