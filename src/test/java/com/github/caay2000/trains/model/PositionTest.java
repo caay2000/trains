@@ -9,6 +9,10 @@ public class PositionTest {
     private static final double ONE_DISTANCE = 1d;
     private static final double DIAGONAL_DISTANCE = 1.41d;
 
+    private static void assertDistance(double expected, double actual) {
+        Assert.assertEquals(expected, actual, Constants.POSITION_DELTA);
+    }
+
     @Test
     public void distanceToSamePosition() {
         Position a = new Position(0, 0);
@@ -86,9 +90,5 @@ public class PositionTest {
     @Test
     public void equalsContract() {
         EqualsVerifier.forClass(Position.class).verify();
-    }
-
-    private static void assertDistance(double expected, double actual) {
-        Assert.assertEquals(expected, actual, Constants.POSITION_DELTA);
     }
 }

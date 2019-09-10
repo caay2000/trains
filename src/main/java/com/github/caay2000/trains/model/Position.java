@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @EqualsAndHashCode
 @ToString
-final public class Position {
+public final class Position {
 
     private final double x;
     private final double y;

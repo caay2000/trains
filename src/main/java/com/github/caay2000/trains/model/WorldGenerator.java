@@ -15,7 +15,7 @@ public class WorldGenerator {
         World world = new World();
         for (int i = 0; i < numberOfCities; i++) {
             City newCity = createRandomCity();
-            if (isSuitable(world, newCity)) {
+            if (newCityIsSuitable(world, newCity)) {
                 createConnections(world, newCity);
                 world.addCity(newCity);
             }
@@ -23,7 +23,7 @@ public class WorldGenerator {
         return world;
     }
 
-    private boolean isSuitable(World world, City newCity) {
+    private boolean newCityIsSuitable(World world, City newCity) {
         for (City city : world.getCities()) {
             if (city.distanceTo(newCity) < Constants.CITY_MIN_DISTANCE_BETWEEN_CITIES) {
                 return false;

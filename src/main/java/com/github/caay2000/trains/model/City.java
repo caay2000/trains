@@ -7,7 +7,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @SuperBuilder
 @EqualsAndHashCode(exclude = {"name", "population"}, callSuper = true)
-final public class City extends WorldObject {
+public final class City extends WorldObject {
 
     private final String name;
     private int population;
