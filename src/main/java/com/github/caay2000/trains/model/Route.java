@@ -1,5 +1,7 @@
 package com.github.caay2000.trains.model;
 
+import com.github.caay2000.trains.model.world.City;
+
 public class Route {
 
     private final City startCity;

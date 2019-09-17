@@ -1,5 +1,7 @@
-package com.github.caay2000.trains.model;
+package com.github.caay2000.trains.model.world;
 
+import com.github.caay2000.trains.model.Position;
+import com.github.caay2000.trains.model.world.City;
 import org.junit.Assert;
 import org.junit.Test;
 import nl.jqno.equalsverifier.EqualsVerifier;

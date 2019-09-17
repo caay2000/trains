@@ -1,16 +1,17 @@
-package com.github.caay2000.trains.model;
+package com.github.caay2000.trains.model.world;
 
-import static com.github.caay2000.trains.model.Constants.CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES;
-import static com.github.caay2000.trains.model.Constants.CITY_MIN_DISTANCE_BETWEEN_CITIES;
-import static com.github.caay2000.trains.model.Constants.GRID_SIZE;
-import static org.mockito.Mockito.when;
-
-import java.util.Random;
+import com.github.caay2000.trains.model.Constants;
+import com.github.caay2000.trains.model.Position;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Random;
+
+import static com.github.caay2000.trains.model.Constants.GRID_SIZE;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WorldGeneratorTest {
@@ -26,7 +27,7 @@ public class WorldGeneratorTest {
     @Test
     public void shortDistanceIsNotSuitable() {
 
-        when(random.nextInt(GRID_SIZE + 1)).thenReturn(0, 0, 1, 0);
+        mockRandomGeneratorWith(POSITION_START, POSITION_SHORT);
 
         WorldGenerator testee = new WorldGenerator(random);
 
@@ -37,7 +38,7 @@ public class WorldGeneratorTest {
     @Test
     public void twoCitiesCreated() {
 
-        when(random.nextInt(GRID_SIZE + 1)).thenReturn(0, 0, CITY_MIN_DISTANCE_BETWEEN_CITIES + 1, 0);
+        mockRandomGeneratorWith(POSITION_START, POSITION_OK);
 
         WorldGenerator testee = new WorldGenerator(random);
 
@@ -48,7 +49,7 @@ public class WorldGeneratorTest {
     @Test
     public void twoCitiesCreatedButNotConnectedWhenDistanceIsTooLong() {
 
-        when(random.nextInt(GRID_SIZE + 1)).thenReturn(0, 0, CITY_MAX_CONNECTION_DISTANCE_BETWEEN_CITIES + 1, 0);
+        mockRandomGeneratorWith(POSITION_START, POSITION_LONG);
 
         WorldGenerator testee = new WorldGenerator(random);
 
@@ -62,7 +63,7 @@ public class WorldGeneratorTest {
     @Test
     public void twoCitiesCreateTwoConnections() {
 
-        when(random.nextInt(GRID_SIZE + 1)).thenReturn(0, 0, CITY_MIN_DISTANCE_BETWEEN_CITIES + 1, 0);
+        mockRandomGeneratorWith(POSITION_START, POSITION_OK);
 
         WorldGenerator testee = new WorldGenerator(random);
 
@@ -71,5 +72,13 @@ public class WorldGeneratorTest {
         City[] cities = world.getCities().toArray(new City[0]);
         Assert.assertTrue(world.getRoutes().hasEdgeConnecting(cities[0], cities[1]));
         Assert.assertTrue(world.getRoutes().hasEdgeConnecting(cities[1], cities[0]));
+    }
+
+    private void mockRandomGeneratorWith(Position positionStart, Position positionEnd) {
+        when(random.nextInt(GRID_SIZE + 1)).thenReturn(
+                Double.valueOf(positionStart.getX()).intValue(),
+                Double.valueOf(positionStart.getY()).intValue(),
+                Double.valueOf(positionEnd.getX()).intValue(),
+                Double.valueOf(positionEnd.getY()).intValue());
     }
 }

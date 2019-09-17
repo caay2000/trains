@@ -1,7 +1,10 @@
-package com.github.caay2000.trains.model;
+package com.github.caay2000.trains.model.world;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.github.caay2000.trains.model.Route;
+import com.github.caay2000.trains.model.world.City;
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
 import lombok.EqualsAndHashCode;

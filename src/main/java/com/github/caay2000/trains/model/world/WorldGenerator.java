@@ -1,6 +1,12 @@
-package com.github.caay2000.trains.model;
+package com.github.caay2000.trains.model.world;
+
+import com.github.caay2000.trains.model.Constants;
+import com.github.caay2000.trains.model.Position;
+import com.github.caay2000.trains.model.Route;
 
 import java.util.Random;
+
+import static com.github.caay2000.trains.model.world.City.Builder.aCity;
 
 public class WorldGenerator {
 
@@ -42,7 +48,7 @@ public class WorldGenerator {
     }
 
     private City createRandomCity() {
-        return City.builder().name("name")
+        return aCity().name("name")
                 .population(1)
                 .position(randomPosition())
                 .build();

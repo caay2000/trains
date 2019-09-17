@@ -20,6 +20,16 @@ public final class Position {
         this.y = y;
     }
 
+    //TODO should be removed ?
+    public double getX() {
+        return x;
+    }
+
+    //TODO should be removed ?
+    public double getY() {
+        return y;
+    }
+
     public double distanceTo(Position to) {
         return Math.hypot(x - to.x, y - to.y);
     }

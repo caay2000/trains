@@ -1,11 +1,10 @@
-package com.github.caay2000.trains.model;
+package com.github.caay2000.trains.model.world;
 
+import com.github.caay2000.trains.model.Position;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
 
 @ToString
-@SuperBuilder
 @EqualsAndHashCode
 public abstract class WorldObject {
 

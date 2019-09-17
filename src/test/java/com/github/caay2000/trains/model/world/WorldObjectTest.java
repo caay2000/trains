@@ -1,5 +1,7 @@
-package com.github.caay2000.trains.model;
+package com.github.caay2000.trains.model.world;
 
+import com.github.caay2000.trains.model.Position;
+import com.github.caay2000.trains.model.world.WorldObject;
 import org.junit.Test;
 import lombok.EqualsAndHashCode;
 import nl.jqno.equalsverifier.EqualsVerifier;
